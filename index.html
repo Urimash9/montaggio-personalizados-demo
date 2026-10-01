@@ -15,8 +15,11 @@ html,body{margin:0;min-height:100%;background:#171918;color:#fff;font-family:Ari
 (async()=>{
   try{
     const files=['chunk-01.txt','chunk-02.txt','chunk-03.txt','chunk-04.txt','chunk-05.txt','chunk-06.txt','chunk-07.txt','chunk-08.txt','chunk-09.txt','chunk-10.txt','chunk-11.txt'];
-    const parts=await Promise.all(files.map(f=>fetch('/approved/'+f).then(r=>{if(!r.ok)throw new Error(f);return r.text()})));
-    const html=parts.join('');
+    const [parts,refinement]=await Promise.all([
+      Promise.all(files.map(f=>fetch('/approved/'+f).then(r=>{if(!r.ok)throw new Error(f);return r.text()}))),
+      fetch('/approved/v23.css').then(r=>{if(!r.ok)throw new Error('v23.css');return r.text()})
+    ]);
+    const html=parts.join('').replace('</head>',`<style id="v23-refinement">${refinement}</style></head>`);
     document.open();
     document.write(html);
     document.close();

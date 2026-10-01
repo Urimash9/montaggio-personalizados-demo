@@ -1,0 +1,92 @@
+/* MONTAGGIO V2.3 — lapidação da base aprovada, sem redesenhar o mobile V2. */
+.reveal,.reveal-media{opacity:1;transform:none;clip-path:inset(0);transition:none}
+.p5{display:none!important}
+
+@media (min-width:561px) and (max-width:900px){
+  .portfolio-flow{height:1390px}
+  .portfolio-more{position:absolute;right:5%;bottom:0;display:flex;align-items:center;justify-content:space-between;width:310px;padding:17px 0 12px;border-top:1px solid var(--line-l);border-bottom:1px solid var(--line-l);font-size:13px;font-weight:520}
+  .portfolio-more i{font-style:normal;font-size:18px}
+}
+
+@media (min-width:901px){
+  :root{--container:1320px;--section:116px}
+  h2{font-size:clamp(54px,4.45vw,72px);line-height:.99}
+  .eyebrow{font-size:12px}
+
+  /* Hero mais horizontal; texto e fotografia trabalham como um único plano. */
+  .hero{min-height:720px;height:min(84svh,830px);max-height:830px}
+  .hero-grid{grid-template-columns:5.55fr 6.45fr}
+  .hero-copy{max-width:790px;padding-top:26px}
+  .hero-copy h1{font-size:clamp(76px,6vw,108px);line-height:.92;max-width:760px;margin-bottom:27px}
+  .hero-copy>p:not(.eyebrow){font-size:clamp(18px,1.35vw,23px);line-height:1.5;max-width:555px}
+  .hero-media{width:68vw}
+  .hero-image img{object-position:center 53%}
+  .hero-index{margin-top:40px}
+  .hero-line-b{bottom:7%;height:29%;background:
+    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/100% 1px no-repeat,
+    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/1px 100% no-repeat,
+    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 100% 0/1px 76% no-repeat,
+    linear-gradient(166deg,transparent 49.25%,rgba(164,32,34,.72) 49.5%,rgba(164,32,34,.72) 50.2%,transparent 50.45%) 0 100%/100% 25% no-repeat}
+
+  /* Sobre: mais presença visual e linhas ocupando os vazios da composição. */
+  .intro{padding:106px 0 110px}
+  .intro-layout{grid-template-columns:5.05fr .45fr 6.5fr;min-height:650px}
+  .intro-visual{height:650px;margin-left:-12px}
+  .intro-shape-main{width:87%;height:93%}
+  .intro-shape-small{width:48%;height:44%;right:-2%}
+  .intro-copy h2{font-size:clamp(55px,4.55vw,73px)}
+
+  /* Ambientes: lista e fotografia se aproximam e leem como uma composição. */
+  .environment-stage{padding:106px 0 110px}
+  .environment-layout{grid-template-columns:4fr 2.75fr 5.25fr;gap:34px;min-height:650px}
+  .environment-copy h2{font-size:clamp(54px,4.35vw,70px)}
+  .environment-list{transform:translateX(10px)}
+  .environment-preview{height:590px;transform:none}
+
+  /* Projeto em destaque: greige contínuo e sobreposição editorial, sem caixa branca. */
+  .featured{grid-template-columns:minmax(0,67%) minmax(390px,33%);min-height:760px;background:#e8ded1}
+  .featured-visual{min-height:760px}
+  .featured-copy{margin-left:-94px;background:#e8ded1;padding:82px 7vw 82px 120px;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%,0 14%)}
+  .featured-copy h2{font-size:clamp(52px,4.2vw,70px)}
+  .featured-copy:before{left:60px;width:112px}
+
+  /* Materialidade e Processo ganham escala sem abandonar a assimetria aprovada. */
+  .details{padding:104px 0 110px}
+  .details-intro{margin-bottom:54px}
+  .detail-composition{height:710px}
+  .detail-tall{width:38%;height:93%}
+  .detail-wide{left:40%;width:60%;height:48%}
+  .detail-small{left:48%;top:51%;width:32%;height:49%}
+  .process{padding:104px 0 108px}
+  .process-grid{grid-template-columns:4.9fr .65fr 6.45fr}
+  .process-copy h2{font-size:clamp(55px,4.55vw,73px)}
+  .step{padding:25px 0}
+
+  /* Quatro imagens aprovadas e CTA incorporado ao fluxo, sem área morta. */
+  .portfolio{padding:106px 0 86px}
+  .portfolio-head{margin-bottom:50px}
+  .portfolio-flow{height:1080px}
+  .p1{width:58%;height:480px}
+  .p2{top:54px;width:35%;height:555px}
+  .p3{left:6%;top:570px;width:32%;height:420px}
+  .p4{left:42%;top:636px;width:55%;height:360px}
+  .portfolio-more{bottom:0}
+}
+
+@media (min-width:1700px){
+  :root{--container:1460px}
+  .hero-grid{grid-template-columns:5.35fr 6.65fr}
+  .hero-media{width:67vw}
+  .environment-preview{height:630px}
+  .detail-composition{height:750px}
+}
+
+/* Mobile V2 permanece intacto: apenas imagem full-bleed e shape sob medida. */
+@media (max-width:560px){
+  .hero-media{left:calc(-1 * var(--gutter));right:auto;width:100vw}
+  .hero-line-b{border:0;background:
+    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/100% 1px no-repeat,
+    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/1px 100% no-repeat,
+    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 100% 0/1px 73% no-repeat,
+    linear-gradient(164deg,transparent 49.2%,rgba(164,32,34,.72) 49.5%,rgba(164,32,34,.72) 50.3%,transparent 50.6%) 0 100%/100% 28% no-repeat}
+}

@@ -38,11 +38,10 @@ function cardGap(){
   if(innerWidth < 1180) return 235;
   return 274;
 }
-function cardAngle(){
-  // Keep the approved mobile V2 angle; deepen only desktop side cards.
-  if(innerWidth < 900) return 16;
-  if(innerWidth < 1180) return 20;
-  return 24;
+function cardAngle(distance){
+  // Laterais convergem suavemente ao eixo; cartões distantes ganham só um pouco mais de giro.
+  if(innerWidth < 900) return Math.min(distance * 16, 24);
+  return distance === 1 ? 16 : Math.min(22 + (distance - 2) * 3, 25);
 }
 function layoutCarousel(){
   const n = cards.length;
@@ -51,9 +50,10 @@ function layoutCarousel(){
     const d = cyclicDiff(i, active, n);
     const ad = Math.abs(d);
     const x = d * gap;
-    const zStep = innerWidth < 560 ? 95 : (innerWidth < 900 ? 135 : 158);
-    const z = -ad * zStep;
-    const ry = d * -cardAngle();
+    const z = innerWidth < 900
+      ? -ad * (innerWidth < 560 ? 95 : 135)
+      : (ad === 0 ? 120 : (ad === 1 ? 20 : -80));
+    const ry = d === 0 ? 0 : Math.sign(d) * -cardAngle(ad);
     const scale = 1 - Math.min(ad,3) * (innerWidth < 900 ? .055 : .06);
     const y = ad * (innerWidth < 900 ? 8 : 11);
     card.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${ry}deg) scale(${scale})`;

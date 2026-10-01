@@ -46,11 +46,6 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
   document.body.style.overflow = '';
 }));
 
-const io = new IntersectionObserver(entries => entries.forEach(e => {
-  if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
-}), {threshold:.1, rootMargin:'0px 0px -5% 0px'});
-document.querySelectorAll('.reveal,.reveal-media').forEach(el => io.observe(el));
-
 // Ambientes: textual list + changing geometric preview
 const environmentPreview = document.getElementById('environmentPreview');
 const previewWrap = document.querySelector('.environment-preview');
