@@ -69,8 +69,10 @@ h1,h2{font-weight:390;text-wrap:balance}
   .detail-tall{width:38%;height:93%}
   .detail-wide{left:40%;width:60%;height:48%}
   .detail-small{left:48%;top:51%;width:32%;height:49%}
+  .detail-note{right:-2.5%;width:17%;max-width:205px}
   .process{padding:104px 0 108px}
   .process-grid{grid-template-columns:4.9fr .65fr 6.45fr}
+  .process-copy{padding-top:42px}
   .process-copy h2{font-size:clamp(55px,4.55vw,73px)}
   .step{padding:25px 0}
   .step strong{font-size:22px;font-weight:500}
@@ -112,8 +114,8 @@ h1,h2{font-weight:390;text-wrap:balance}
   .hero-line-b{z-index:5;bottom:15%;border:0;background:
     linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/100% 1px no-repeat,
     linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/1px 100% no-repeat,
-    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 100% 0/1px 76% no-repeat}
-  .hero-line-b:after{content:"";position:absolute;left:0;bottom:0;width:102%;height:1px;background:rgba(164,32,34,.72);transform:rotate(-16deg);transform-origin:left center}
+    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 100% 0/1px 72% no-repeat}
+  .hero-line-b:after{content:"";position:absolute;left:0;bottom:0;width:102%;height:1px;background:rgba(164,32,34,.72);transform:rotate(-19deg);transform-origin:left center}
   /* O último recorte termina em 890px; o container agora o contém antes de Processo. */
   .detail-composition{height:910px}
   .details{padding-bottom:82px}
