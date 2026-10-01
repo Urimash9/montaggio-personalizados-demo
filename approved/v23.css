@@ -103,7 +103,7 @@ h1,h2{font-weight:390;text-wrap:balance}
   .detail-composition{height:750px}
 }
 
-/* Mobile V2 permanece intacto: apenas imagem full-bleed e shape sob medida. */
+/* Mobile V2 permanece intacto: imagem full-bleed sem o antigo selo geométrico. */
 @media (max-width:560px){
   h1,h2{font-weight:390}
   h2{line-height:1.01;letter-spacing:-.045em}
@@ -111,11 +111,7 @@ h1,h2{font-weight:390;text-wrap:balance}
   .intro-copy>p:not(.eyebrow),.environment-copy>p:not(.eyebrow),.featured-copy>p:not(.eyebrow),.details-intro>p:not(.eyebrow),.portfolio-head>p{color:#5b5852}
   .hero-media{left:calc(-1 * var(--gutter));right:auto;width:100vw}
   .hero-copy>p:not(.eyebrow){color:rgba(255,255,255,.74);font-weight:410}
-  .hero-line-b{z-index:5;bottom:15%;border:0;background:
-    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/100% 1px no-repeat,
-    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/1px 100% no-repeat,
-    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 100% 0/1px 72% no-repeat}
-  .hero-line-b:after{content:"";position:absolute;left:0;bottom:0;width:102%;height:1px;background:rgba(164,32,34,.72);transform:rotate(-19deg);transform-origin:left center}
+  .hero-line-b,.hero-chip{display:none}
   /* O último recorte termina em 890px; o container agora o contém antes de Processo. */
   .detail-composition{height:910px}
   .details{padding-bottom:82px}
