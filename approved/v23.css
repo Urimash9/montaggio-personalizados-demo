@@ -83,6 +83,10 @@ h1,h2{font-weight:390;text-wrap:balance}
   .p3{left:6%;top:570px;width:32%;height:420px}
   .p4{left:42%;top:636px;width:55%;height:360px}
   .portfolio-more{bottom:0}
+
+  /* A foto de closet veio de material social; o zoom lateral elimina os ícones da captura sem alterar o projeto real. */
+  .p1 img[src$="projeto-02.webp"]{object-position:left center;transform:scale(1.12);transform-origin:left center}
+  .p1:hover img[src$="projeto-02.webp"]{transform:scale(1.14)}
 }
 
 @media (min-width:901px) and (max-width:1100px){
@@ -130,8 +134,26 @@ h1,h2{font-weight:390;text-wrap:balance}
 .spatial-card img[src$="sala-jantar.webp"]{object-position:55% center}
 .spatial-card img[src$="detalhe-marcenaria.webp"]{object-position:center 48%}
 
+/* Curadoria final: prova real nas áreas de execução e imagens editoriais nas áreas conceituais. */
+.intro-shape-main img[src$="sobre-principal.webp"]{object-position:center 48%}
+.intro-shape-small img[src$="sobre-secundaria.webp"]{object-position:center 46%}
+.featured-visual img[src$="projeto-destaque.webp"]{object-position:center 57%}
+.detail-tall img[src$="vidro-transparencia.webp"]{object-position:center 48%}
+.detail-wide img[src$="madeira-textura.webp"]{object-position:center 52%}
+.detail-small img[src$="luz-integrada.webp"]{object-position:center 47%}
+.p2 img[src$="projeto-01.webp"]{object-position:center 45%}
+.p3 img[src$="projeto-03.webp"]{object-position:center 46%}
+.p4 img[src$="projeto-04.webp"]{object-position:center 52%}
+.final-cta>img[src$="cta-adega.webp"]{object-position:center 52%}
+
 @media(max-width:560px){
   .hero-image img{object-position:58% center}
   .environment-preview img[src$="cozinha-alt.webp"]{object-position:60% center}
   .environment-preview img[src$="sala-painel-tv.webp"]{object-position:62% center}
+  .featured-visual img[src$="projeto-destaque.webp"]{object-position:center 55%}
+  .p1 img[src$="projeto-02.webp"]{object-position:center 50%;transform:none}
+  .p2 img[src$="projeto-01.webp"]{object-position:center 45%}
+  .p3 img[src$="projeto-03.webp"]{object-position:center 44%}
+  .p4 img[src$="projeto-04.webp"]{object-position:center 50%}
+  .final-cta>img[src$="cta-adega.webp"]{object-position:54% center}
 }
