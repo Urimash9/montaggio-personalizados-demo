@@ -33,6 +33,36 @@ html,body{margin:0;min-height:100%;background:#171918;color:#fff;font-family:Ari
     ]
   };
 
+  const finalAssets={
+    about:[
+      {src:'/assets/images/editorial/sobre/sobre-principal.webp',alt:'Composição editorial de marcenaria e iluminação',w:840,h:1200},
+      {src:'/assets/images/editorial/sobre/sobre-secundaria.webp',alt:'Composição editorial de home office planejado',w:840,h:1200}
+    ],
+    featured:{src:'/assets/images/reais/destaque/projeto-destaque.webp',alt:'Projeto real de cozinha executado pela Montaggio',w:987,h:1200},
+    material:[
+      {src:'/assets/images/editorial/materialidade/vidro-transparencia.webp',alt:'Detalhe editorial de vidro e transparência',w:840,h:1200},
+      {src:'/assets/images/editorial/materialidade/madeira-textura.webp',alt:'Detalhe editorial de madeira e textura',w:1200,h:840},
+      {src:'/assets/images/editorial/materialidade/luz-integrada.webp',alt:'Detalhe editorial de iluminação integrada',w:840,h:1200}
+    ],
+    projects:[
+      {src:'/assets/images/reais/projetos/projeto-02.webp',alt:'Closet executado pela Montaggio',title:'Closet',category:'Residencial',w:1200,h:964},
+      {src:'/assets/images/reais/projetos/projeto-01.webp',alt:'Home office executado pela Montaggio',title:'Home Office',category:'Residencial',w:987,h:1200},
+      {src:'/assets/images/reais/projetos/projeto-03.webp',alt:'Cristaleira executada pela Montaggio',title:'Cristaleira',category:'Residencial',w:987,h:1200},
+      {src:'/assets/images/reais/projetos/projeto-04.webp',alt:'Painel integrado executado pela Montaggio',title:'Painel integrado',category:'Residencial',w:1200,h:902}
+    ],
+    cta:{src:'/assets/images/editorial/contato/cta-adega.webp',alt:'Referência editorial de adega planejada com iluminação',w:1200,h:675}
+  };
+
+  const setImage=(img,data,{lazy=true}={})=>{
+    if(!img||!data)return;
+    img.src=data.src;
+    img.alt=data.alt||'';
+    img.width=data.w;
+    img.height=data.h;
+    img.decoding='async';
+    if(lazy)img.loading='lazy'; else img.removeAttribute('loading');
+  };
+
   const applyCuratedAssets=(doc)=>{
     const preload=doc.createElement('link');
     preload.rel='preload'; preload.as='image'; preload.href=curated.hero; preload.type='image/webp'; preload.setAttribute('fetchpriority','high');
@@ -56,8 +86,7 @@ html,body{margin:0;min-height:100%;background:#171918;color:#fff;font-family:Ari
       card.dataset.sub=data.sub;
       card.dataset.message=data.message;
       card.dataset.index=String(i);
-      const img=card.querySelector('img');
-      if(img){img.src=data.src;img.alt=data.alt;img.width=data.w;img.height=data.h;img.decoding='async';img.loading='lazy';}
+      setImage(card.querySelector('img'),data);
       const number=card.querySelector('.card-surface span');
       if(number) number.textContent=String(i+1).padStart(2,'0');
       const title=card.querySelector('.card-surface strong');
@@ -70,6 +99,26 @@ html,body{margin:0;min-height:100%;background:#171918;color:#fff;font-family:Ari
     if(activeTitle) activeTitle.textContent=curated.references[0].title;
     if(activeSub) activeSub.textContent=curated.references[0].sub;
     if(activeBudget) activeBudget.href='https://wa.me/5517997674604?text=Olá%20Montaggio!%20Vi%20a%20referência%20de%20painel%20para%20TV%20planejado%20e%20gostaria%20de%20um%20orçamento.';
+
+    setImage(doc.querySelector('.intro-shape-main img'),finalAssets.about[0]);
+    setImage(doc.querySelector('.intro-shape-small img'),finalAssets.about[1]);
+    setImage(doc.querySelector('.featured-visual img'),finalAssets.featured);
+
+    [doc.querySelector('.detail-tall img'),doc.querySelector('.detail-wide img'),doc.querySelector('.detail-small img')]
+      .forEach((img,i)=>setImage(img,finalAssets.material[i]));
+
+    ['.project.p1','.project.p2','.project.p3','.project.p4'].forEach((selector,i)=>{
+      const figure=doc.querySelector(selector);
+      const data=finalAssets.projects[i];
+      if(!figure||!data)return;
+      setImage(figure.querySelector('img'),data);
+      const title=figure.querySelector('figcaption strong');
+      const category=figure.querySelector('figcaption span');
+      if(title)title.textContent=data.title;
+      if(category)category.textContent=data.category;
+    });
+
+    setImage(doc.querySelector('.final-cta > img'),finalAssets.cta);
   };
 
   try{
