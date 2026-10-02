@@ -13,15 +13,82 @@ html,body{margin:0;min-height:100%;background:#171918;color:#fff;font-family:Ari
 <div id="loading">Carregando Montaggio…</div>
 <script>
 (async()=>{
+  const curated={
+    hero:'/assets/images/hero/cozinha-hero.webp',
+    environments:[
+      '/assets/images/ambientes/cozinha-alt.webp',
+      '/assets/images/ambientes/closet-frontal.webp',
+      '/assets/images/ambientes/dormitorio-painel.webp',
+      '/assets/images/ambientes/home-office-executivo.webp',
+      '/assets/images/ambientes/sala-painel-tv.webp'
+    ],
+    references:[
+      {src:'/assets/images/referencias/painel-madeira-corredor.webp',title:'Painel amadeirado',sub:'Circulação · painel e iluminação',message:'painel%20para%20TV%20planejado',alt:'Referência editorial de painel amadeirado',w:1122,h:1402},
+      {src:'/assets/images/referencias/cristaleira.webp',title:'Cristaleira iluminada',sub:'Exposição · vidro e iluminação',message:'cristaleira%20iluminada',alt:'Referência editorial de cristaleira iluminada',w:1122,h:1402},
+      {src:'/assets/images/referencias/closet-canelado.webp',title:'Closet planejado',sub:'Closet · composição canelada',message:'closet%20planejado',alt:'Referência editorial de closet canelado',w:1122,h:1402},
+      {src:'/assets/images/referencias/adega.webp',title:'Adega planejada',sub:'Adega · armazenamento e presença',message:'adega%20planejada',alt:'Referência editorial de adega planejada',w:1122,h:1402},
+      {src:'/assets/images/referencias/home-office-minimal.webp',title:'Home office',sub:'Trabalho · organização minimalista',message:'home%20office%20minimalista',alt:'Referência editorial de home office minimalista',w:1122,h:1402},
+      {src:'/assets/images/referencias/sala-jantar.webp',title:'Sala de jantar',sub:'Convívio · integração e matéria',message:'sala%20de%20jantar%20planejada',alt:'Referência editorial de sala de jantar',w:1448,h:1086},
+      {src:'/assets/images/referencias/detalhe-marcenaria.webp',title:'Detalhe de marcenaria',sub:'Precisão · matéria e acabamento',message:'detalhe%20de%20marcenaria',alt:'Referência editorial de detalhe de marcenaria',w:1122,h:1402}
+    ]
+  };
+
+  const applyCuratedAssets=(doc)=>{
+    const preload=doc.createElement('link');
+    preload.rel='preload'; preload.as='image'; preload.href=curated.hero; preload.type='image/webp'; preload.setAttribute('fetchpriority','high');
+    doc.head.appendChild(preload);
+
+    const hero=doc.querySelector('.hero-image img');
+    if(hero){hero.src=curated.hero;hero.alt='';hero.width=1672;hero.height=941;hero.decoding='async';hero.setAttribute('fetchpriority','high');hero.removeAttribute('loading');}
+
+    const environmentButtons=[...doc.querySelectorAll('.environment-item')];
+    environmentButtons.slice(0,curated.environments.length).forEach((btn,i)=>btn.dataset.img=curated.environments[i]);
+    const environmentPreview=doc.getElementById('environmentPreview');
+    if(environmentPreview){environmentPreview.src=curated.environments[0];environmentPreview.width=1448;environmentPreview.height=1086;environmentPreview.decoding='async';environmentPreview.loading='lazy';}
+
+    const spatialCopy=doc.querySelector('.spatial-head > p');
+    if(spatialCopy) spatialCopy.textContent='Explore referências conceituais para o seu ambiente. Cada imagem é um ponto de partida: medidas, acabamentos e composição são redesenhados para cada espaço.';
+
+    const cards=[...doc.querySelectorAll('.spatial-card')];
+    cards.slice(0,curated.references.length).forEach((card,i)=>{
+      const data=curated.references[i];
+      card.dataset.title=data.title;
+      card.dataset.sub=data.sub;
+      card.dataset.message=data.message;
+      card.dataset.index=String(i);
+      const img=card.querySelector('img');
+      if(img){img.src=data.src;img.alt=data.alt;img.width=data.w;img.height=data.h;img.decoding='async';img.loading='lazy';}
+      const number=card.querySelector('.card-surface span');
+      if(number) number.textContent=String(i+1).padStart(2,'0');
+      const title=card.querySelector('.card-surface strong');
+      if(title) title.textContent=data.title;
+    });
+
+    const activeTitle=doc.getElementById('activeTitle');
+    const activeSub=doc.getElementById('activeSub');
+    const activeBudget=doc.getElementById('activeBudget');
+    if(activeTitle) activeTitle.textContent=curated.references[0].title;
+    if(activeSub) activeSub.textContent=curated.references[0].sub;
+    if(activeBudget) activeBudget.href='https://wa.me/5517997674604?text=Olá%20Montaggio!%20Vi%20a%20referência%20de%20painel%20para%20TV%20planejado%20e%20gostaria%20de%20um%20orçamento.';
+  };
+
   try{
     const files=['chunk-01.txt','chunk-02.txt','chunk-03.txt','chunk-04.txt','chunk-05.txt','chunk-06.txt','chunk-07.txt','chunk-08.txt','chunk-09.txt','chunk-10.txt','chunk-11.txt'];
     const [parts,refinement]=await Promise.all([
       Promise.all(files.map(f=>fetch('/approved/'+f).then(r=>{if(!r.ok)throw new Error(f);return r.text()}))),
       fetch('/approved/v23.css').then(r=>{if(!r.ok)throw new Error('v23.css');return r.text()})
     ]);
-    const html=parts.join('').replace('</head>',`<style id="v23-refinement">${refinement}</style></head>`);
+
+    const source=parts.join('');
+    const doc=new DOMParser().parseFromString(source,'text/html');
+    const style=doc.createElement('style');
+    style.id='v23-refinement';
+    style.textContent=refinement;
+    doc.head.appendChild(style);
+    applyCuratedAssets(doc);
+
     document.open();
-    document.write(html);
+    document.write('<!doctype html>'+doc.documentElement.outerHTML);
     document.close();
   }catch(e){
     document.getElementById('loading').textContent='Falha ao carregar a base aprovada.';
