@@ -1,0 +1,66 @@
+name: Extract Montaggio assets
+
+on:
+  push:
+    branches:
+      - assets/montaggio-curadoria-v1
+    paths:
+      - montaggio-curadoria-v1.zip
+      - .github/workflows/extract-montaggio-assets.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: assets/montaggio-curadoria-v1
+
+      - name: Extract curated assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f montaggio-curadoria-v1.zip
+          rm -rf /tmp/montaggio-assets
+          mkdir -p /tmp/montaggio-assets
+          unzip -o montaggio-curadoria-v1.zip -d /tmp/montaggio-assets
+
+          mkdir -p assets/images/hero assets/images/ambientes assets/images/referencias
+          cp -R /tmp/montaggio-assets/assets/images/hero/. assets/images/hero/
+          cp -R /tmp/montaggio-assets/assets/images/ambientes/. assets/images/ambientes/
+          cp -R /tmp/montaggio-assets/assets/images/referencias/. assets/images/referencias/
+
+          test -f assets/images/hero/cozinha-hero.webp
+          test -f assets/images/ambientes/cozinha-alt.webp
+          test -f assets/images/ambientes/closet-frontal.webp
+          test -f assets/images/ambientes/dormitorio-painel.webp
+          test -f assets/images/ambientes/home-office-executivo.webp
+          test -f assets/images/ambientes/sala-painel-tv.webp
+          test -f assets/images/referencias/painel-madeira-corredor.webp
+          test -f assets/images/referencias/cristaleira.webp
+          test -f assets/images/referencias/closet-canelado.webp
+          test -f assets/images/referencias/adega.webp
+          test -f assets/images/referencias/home-office-minimal.webp
+          test -f assets/images/referencias/sala-jantar.webp
+          test -f assets/images/referencias/detalhe-marcenaria.webp
+
+          rm montaggio-curadoria-v1.zip
+
+      - name: Commit extracted assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images montaggio-curadoria-v1.zip
+          if git diff --cached --quiet; then
+            echo "No asset changes to commit."
+            exit 0
+          fi
+          git commit -m "Add curated Montaggio image assets"
+          git push origin HEAD:assets/montaggio-curadoria-v1
