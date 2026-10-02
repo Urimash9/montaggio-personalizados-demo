@@ -28,11 +28,7 @@ h1,h2{font-weight:390;text-wrap:balance}
   .hero-media{width:68vw}
   .hero-image img{object-position:center 53%}
   .hero-index{margin-top:40px}
-  .hero-line-b{z-index:5;bottom:9%;height:29%;border:0;background:
-    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/100% 1px no-repeat,
-    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 0 0/1px 100% no-repeat,
-    linear-gradient(rgba(164,32,34,.72),rgba(164,32,34,.72)) 100% 0/1px 88% no-repeat}
-  .hero-line-b:after{content:"";position:absolute;left:0;bottom:0;width:101%;height:1px;background:rgba(164,32,34,.72);transform:rotate(-8deg);transform-origin:left center}
+  .hero-line-b,.hero-chip{display:none}
 
   /* Sobre: mais presença visual e linhas ocupando os vazios da composição. */
   .intro{padding:106px 0 110px}
