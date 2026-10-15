@@ -1,37 +1,40 @@
-# Montaggio — Asset Map V1
+# Curadoria de imagens / AVERO Concept
 
-Generated/editorial assets. These images are visual references and must NOT be presented as completed Montaggio projects.
+Todas as imagens deste preview são conceituais ou editoriais. Não há fotografia de obra executada apresentada como estudo autoral de interiores.
 
-## Hero
-- `assets/images/hero/cozinha-hero.webp`
+## Novas imagens conceituais
 
-## Ambientes
-- Cozinhas: `assets/images/ambientes/cozinha-alt.webp`
-- Closets: `assets/images/ambientes/closet-frontal.webp`
-- Dormitórios: `assets/images/ambientes/dormitorio-painel.webp`
-- Home Offices: `assets/images/ambientes/home-office-executivo.webp`
-- Salas & painéis: `assets/images/ambientes/sala-painel-tv.webp`
+Geradas por IA como ambientes imaginários independentes, sem referência fotográfica da empresa de origem, marcas, pessoas, endereços ou tipografia. Convertidas para WebP nas proporções dos slots existentes.
 
-## Referências / carrossel 3D
-- Painel amadeirado: `assets/images/referencias/painel-madeira-corredor.webp`
-- Cristaleira iluminada: `assets/images/referencias/cristaleira.webp`
-- Closet canelado: `assets/images/referencias/closet-canelado.webp`
-- Adega planejada: `assets/images/referencias/adega.webp`
-- Home office minimal: `assets/images/referencias/home-office-minimal.webp`
-- Sala de jantar: `assets/images/referencias/sala-jantar.webp`
-- Detalhe de marcenaria: `assets/images/referencias/detalhe-marcenaria.webp`
+| Slot | Asset | Dimensões |
+| --- | --- | --- |
+| Estudo em destaque | `assets/images/conceito/cozinha-integrada.webp` | 987 × 1200 |
+| Estudos / closet | `assets/images/conceito/closet.webp` | 1200 × 964 |
+| Estudos / home office | `assets/images/conceito/escritorio.webp` | 987 × 1200 |
+| Estudos / cristaleira | `assets/images/conceito/cristaleira.webp` | 987 × 1200 |
+| Estudos / painel | `assets/images/conceito/painel.webp` | 1200 × 902 |
+| Carrossel / home office | `assets/images/referencias/escritorio-conceitual.webp` | 1122 × 1402 |
 
-## Real project sections
-Do not use the generated/editorial assets above in sections labeled as completed/real work.
-For Sobre, Projeto em Destaque, Materialidade and Projetos Realizados, preserve selected real Montaggio photography from the current implementation, but migrate it out of base64/chunks into standalone optimized image files under:
-- `assets/images/reais/sobre/`
-- `assets/images/reais/destaque/`
-- `assets/images/reais/materialidade/`
-- `assets/images/reais/projetos/`
+Nenhum dos seis slots usa blur ou anonimização provisória. As imagens anteriores foram excluídas somente da árvore desta branch conceitual.
 
-## Rules
-- No visible repeated generated image across Hero, Ambientes and Referências.
-- Preserve current V2.3 layout and section order.
-- Optimize real extracted images to WebP.
-- Use responsive `object-fit: cover` and per-slot `object-position` instead of distorting assets.
-- Keep image filenames ASCII/kebab-case.
+## Referências editoriais preservadas
+
+- Hero: `assets/images/hero/cozinha-hero.webp`.
+- Ambientes: cinco imagens em `assets/images/ambientes/`.
+- Carrossel: painel amadeirado, cristaleira, closet canelado, adega, sala de jantar e detalhe de marcenaria em `assets/images/referencias/`.
+- Sobre: duas imagens em `assets/images/editorial/sobre/`.
+- Materialidade: três imagens em `assets/images/editorial/materialidade/`.
+- CTA: `assets/images/editorial/contato/cta-adega.webp`.
+
+Esses assets pertenciam à curadoria editorial da base e foram preservados sem alterações. A referência de home office que coincidia visualmente com uma obra da origem foi substituída.
+
+## Direção dos seis novos assets
+
+Gerador integrado de imagens. Prompts: fotografia arquitetônica editorial de ambientes inteiramente imaginários, materiais naturais, luz equilibrada e marcenaria plausível; sem marcas, pessoas, textos, endereços ou reprodução de obra existente.
+
+- Cozinha: armários em carvão e nogueira, ilha de pedra clara, iluminação de tarefa discreta; enquadramento vertical diagonal.
+- Closet: madeira quente, portas em linho, armário central de vidro e banco estofado; enquadramento horizontal.
+- Home office dos estudos: carvalho claro, mesa suspensa, parede greige, cadeira terracota e luz lateral; enquadramento vertical.
+- Cristaleira: vidro fumê, perfis em bronze, prateleiras de nogueira e luz interna suave; enquadramento vertical.
+- Painel: nogueira, tela integrada, console de pedra e sofá de linho; enquadramento horizontal.
+- Home office do carrossel: nicho de parede clara, mesa em carvalho e cadeira oliva; enquadramento vertical.

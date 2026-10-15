@@ -1,0 +1,5 @@
+.git
+*.md
+qa
+scripts
+node_modules

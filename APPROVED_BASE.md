@@ -1,18 +1,9 @@
-# Montaggio — Base visual aprovada
+# Referência estrutural preservada
 
-Esta branch/main deve ser tratada como a referência de implementação da Montaggio.
+Esta cópia deriva do commit-base `d2cf26bc44f1a41b4fe3bc169380700e2ae9e78b`.
 
-## Regra de trabalho
-- A versão Mobile V2 é a referência visual mestre.
-- Não redesenhar ou reinterpretar a página.
-- Refinamentos futuros devem preservar layout, tipografia, cards, shapes, alternância claro/escuro e carrossel 3D.
-- A implementação aprovada está serializada em `approved/chunk-01.txt` … `approved/chunk-07.txt`.
-- O `index.html` apenas recompõe e executa essa implementação no navegador.
-- Antes de uma refatoração estrutural, reconstrua o HTML concatenando os chunks na ordem numérica e compare visualmente com a versão publicada.
-- As imagens estão comprimidas apenas para manter a base leve no repositório; a curadoria/substituição definitiva de imagens é uma etapa posterior.
+A versão mobile aprovada continua sendo a referência de composição. Preservar layout, tipografia, grids, hierarquia, recortes, sobreposições, ritmo claro/escuro e carrossel espacial.
 
-## Não fazer
-- Não iniciar um novo layout do zero.
-- Não substituir a linguagem visual por templates genéricos.
-- Não aplicar reveal/fade-up global no scroll.
-- Não descaracterizar o Mobile V2.
+Ajustes autorizados: remoção de identidade comercial e prova social real; substituição de fotografias de obras por estudos visuais; reescrita conceitual; adequação de metadados e links.
+
+Não redesenhar, inserir dados históricos ou números inventados, nem criar depoimentos fictícios. A `main` e a publicação original são referências protegidas.
